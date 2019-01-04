@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Admin</h1>      
+    <p>Xin chào admin !!!</p>
+  </div>
+  <div class="canle"></div>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-3">
+              <b> DANH SÁCH MÔN HỌC:</b>
+              <div id=monhoc>
+              </div>
+
+              <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                      Quản lý môn học
+                      <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                      <li><a data-toggle="modal" data-target="#formThemMonHoc"><span class="glyphicon glyphicon-plus"></span> Thêm môn học</a></li>
+                      <li><a data-toggle="modal" data-target="#formSuaMonHoc"><span class="glyphicon glyphicon-edit"></span> Sửa môn học</a></li>
+                      <li><a data-toggle="modal" data-target="#formXoaMonHoc"><span class="glyphicon glyphicon-trash"></span> Xóa môn học</a></li>
+                  </ul>
+              </div>
+              <div class="modal fade" id="formThemMonHoc" role="dialog">
+                  <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"> <span class="glyphicon glyphicon-plus"></span> Thêm mới môn học</h4>
+                          </div>
+                          <div class="modal-body">
+                              <span>Tên môn học:</span> <br>
+                              <input type="text" id="subjectName" class="form-control"> <br>
+                          </div>
+                          <div class="modal-footer">
+                              <input type="button" value="Thêm" class="btn btn-success" id="btnThem">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal" id="closeThemMH">Close</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal fade" id="formSuaMonHoc" role="dialog">
+                  <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"><span class="glyphicon glyphicon-edit"></span> Sửa môn học</h4>
+                          </div>
+                          <div class="modal-body">
+                              <select id="sua_danhsachmon"></select> <br>
+                              <span>Tên môn học:</span> <br>
+                              <input type="text" id="sua_SubjectName" class="form-control"> <br>
+                          </div>
+                          <div class="modal-footer">
+                              <input type="button" value="Sửa " class="btn btn-success" id="btnSuaMH">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal" id="closeSuaMH">Close</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="modal fade" id="formXoaMonHoc" role="dialog">
+                  <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"><span class="glyphicon glyphicon-trash"></span> Xóa môn học</h4>
+                          </div>
+                          <div class="modal-body">
+                              <select id="xoa_danhsachmon"></select> <br>
+                          </div>
+                          <div class="modal-footer">
+                              <input type="button" value="Xóa " class="btn btn-danger" id="btnXoaMH">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal" id="closeXoaMH">Close</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-9">
+              <!-- <input type="button" value="Đăng xuất" class="btn btn-primary btnDangXuat"> -->
+              <button class="btn btn-primary btnDangXuat"><span class="glyphicon glyphicon-home"></span> Đăng xuất</button>
+              <button  class="btn btn-primary btnTaoTaiKhoan" data-toggle="modal" data-target="#modalTaoTK"><span class="glyphicon glyphicon-user"></span> Tạo tài khoản sinh viên</button>
+              <!-- <input type="button" value="Tạo tài khoản sinh viên" class="btn btn-primary btnTaoTaiKhoan" data-toggle="modal" data-target="#modalTaoTK"> -->
+              <div class="modal fade" id="modalTaoTK" role="dialog">
+                  <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h2 class="modal-title">Tạo tài khoản sinh viên</h2><br>
+                          </div>
+                          <div class="modal-body">
+                              <label >Tên đăng nhập:</label>
+                              <input type="text" id="tenDangNhap" class="form form-control">
+                              <label >Mật khẩu:</label>
+                              <input type="password" id="matKhau" class="form form-control">    
+                          </div>
+                          <div class="modal-footer">
+                              <input type="button" value="Tạo" class="btn btn-success" id="btnThemTK">
+                              <button type="button" class="btn btn-default" data-dismiss="modal" id="closeThemTK">Close</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="col9">
+                  <b id="name">Thông tin môn học</b> <br>
+                  <input type="button" value="Thêm câu hỏi" class="btn btn-primary btnThemMon" id="ThemCauHoi"
+                      data-toggle="modal" data-target="#modalThemCauHoi">
+                  <div class="modal fade" id="modalThemCauHoi" role="dialog">
+                      <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h2 class="modal-title"> <span class="glyphicon glyphicon-plus"></span> Thêm mới câu hỏi</h2><br>
+                                  <label>Chọn môn học: </label>
+                                  <select id="danhsachmon"></select> <br>
+                              </div>
+                              <div class="modal-body">
+                                  <label>Nội dung câu hỏi:</label> <br>
+                                  <textarea class="form-control" type="text" id="noiDungCauHoi" autofocus></textarea><br>
+                                  <label>Độ khó: </label>
+                                  <select id="doKho">
+                                      <option value="1">Dễ</option>
+                                      <option value="2">Trung bình</option>
+                                      <option value="3">Khó</option>
+                                  </select>
+                                  <label>số lượng đáp án:</label>
+                                  <input type="number" value="4" min="2" max="8" id="soLuongDapAn">
+                                  <div id="dapAn"></div>
+                              </div>
+                              <div class="modal-footer">
+                                  <input type="button" value="Thêm" class="btn btn-success" id="btnThemCauHoi">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal" id="closeThemCauHoi">Close</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="modal fade" id="modalSuaCauHoi" role="dialog">
+                      <div class="modal-dialog modal-lg">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h2 class="modal-title"><span class="glyphicon glyphicon-edit"></span> Sửa câu hỏi</h2><br>
+                              </div>
+                              <div class="modal-body">
+                                  <label>Nội dung câu hỏi:</label> <br>
+                                  <textarea class="form-control" type="text" id="sua_noiDungCauHoi" autofocus></textarea><br>
+                                  <label>Độ khó: </label>
+                                  <select id="sua_doKho">
+                                      <option value="1">Dễ</option>
+                                      <option value="2">Trung bình</option>
+                                      <option value="3">Khó</option>
+                                  </select>
+                                  <div id="sua_dapAn"></div>
+                              </div>
+                              <div class="modal-footer">
+                                  <input type="button" value="Sửa câu hỏi" class="btn btn-success" id="btnSuaCauHoi">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal" id="closeSuaCauHoi">Close</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <input type="button" class="btn btn-primary" value="Lịch thi"  id="btnLichThi" data-toggle="modal" data-target="#modalLichThi">
+                  <div class="modal fade" id="modalLichThi" role="dialog">
+                      <div class="modal-dialog modal-md">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h2 class="modal-title">Quản lý lịch thi</h2><br>
+                              </div>
+                              <div class="modal-body">
+                                  <label >Giờ bắt đầu:</label>
+                                  <input type="datetime-local" id="gioBatDau" class="form form-control">
+                                  <label >Giờ kết thúc:</label>
+                                  <input type="datetime-local" id="gioKetThuc" class="form form-control"><br>
+                                  <label >Lịch thi:</label>
+                                  <div id="lichthi"></div>    
+                              </div>
+                              <div class="modal-footer">
+                                  <input type="button" value="Thêm lịch thi" class="btn btn-success" id="btnThemLichThhi">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal" id="closeLichThi">Close</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <input type="button" class="btn btn-primary" value="Quản lý đề thi"  id="btnQLDT" data-toggle="modal" data-target="#modalQLDT">
+                  <div class="modal fade" id="modalQLDT" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h2 class="modal-title">Quản lý đề thi</h2><br>
+                              </div>
+                              <div class="modal-body">
+                                  <label >Số lượng câu hỏi:</label>
+                                  <input type="number" min='10' id="soLuongCauHoi" class="form-control" value="10">
+                              </div>
+                              <div class="modal-footer">
+                                  <input type="button" value="OK " class="btn btn-success" id="btnOK">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal" id="closeQLDT">Close</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="cauhoi"></div>
+                  <div id="phantrang"></div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</body>
+</html>
